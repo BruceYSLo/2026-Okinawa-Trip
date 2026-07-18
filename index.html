@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1c3044">
+<title>羅家沖繩員工旅遊｜2026.09.23–26</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;800&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #ece3cf;
+    --bg-card: #f8f2e4;
+    --bg-card-edge: #efe6d2;
+    --ink: #2a2622;
+    --ink-soft: #746c5e;
+    --ink-faint: #a49a86;
+    --indigo: #1c3044;
+    --indigo-deep: #101d2b;
+    --indigo-soft: #3d5568;
+    --red: #a3382f;
+    --red-soft: #c1584d;
+    --gold: #a98249;
+    --line: rgba(42,38,34,0.14);
+    --line-strong: rgba(42,38,34,0.24);
+    --shadow: 0 10px 24px rgba(28,24,16,0.10);
+    --radius: 2px;
+    --appbar-h: 76px;
+    --tabbar-h: 78px;
+  }
+
+  *{ box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  html, body{
+    margin:0; padding:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Zen Kaku Gothic New", "Noto Sans TC", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body{
+    background-image:
+      radial-gradient(rgba(42,38,34,0.035) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+
+  h1,h2,h3, .mincho{ font-family: "Shippori Mincho", serif; }
+
+  .app{
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: var(--bg);
+    position: relative;
+    box-shadow: 0 0 60px rgba(0,0,0,0.12);
+  }
+
+  /* ---------- APP BAR ---------- */
+  .appbar{
+    position: fixed;
+    top:0; left:50%; transform: translateX(-50%);
+    width: 100%; max-width: 480px;
+    height: var(--appbar-h);
+    background: linear-gradient(180deg, var(--indigo) 0%, var(--indigo-deep) 100%);
+    color: #ece3cf;
+    z-index: 50;
+    display:flex; align-items:center;
+    padding: 10px 18px 14px;
+    gap: 12px;
+    box-shadow: 0 4px 16px rgba(16,29,43,0.35);
+  }
+  .appbar .torii{ width: 34px; height: 34px; flex: none; opacity: 0.92; }
+  .appbar .titles{ flex:1; min-width:0; }
+  .appbar .titles h1{
+    margin:0; font-size: 21px; font-weight: 600; letter-spacing: 0.04em;
+    line-height:1.3;
+  }
+  .appbar .titles p{
+    margin: 2px 0 0; font-size: 13px; letter-spacing: 0.09em;
+    color: #cdbfa0; font-weight:400;
+  }
+  .appbar .stamp-mini{
+    width: 40px; height:40px; border-radius:50%;
+    border: 1.4px solid rgba(236,227,207,0.55);
+    display:flex; align-items:center; justify-content:center;
+    font-family:"Shippori Mincho",serif; font-size:13px; letter-spacing:0.05em;
+    color:#ece3cf; flex:none; text-align:center; line-height:1.1;
+  }
+
+  /* ---------- CONTENT ---------- */
+  .content{
+    padding: calc(var(--appbar-h) + 18px) 16px calc(var(--tabbar-h) + 28px);
+    min-height: 100vh;
+  }
+
+  .panel{ animation: fadein 0.32s ease; }
+  @keyframes fadein{
+    from{ opacity:0; transform: translateY(6px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .panel{ animation: none; }
+  }
+
+  .eyebrow{
+    font-size: 13px; letter-spacing: 0.22em; color: var(--gold);
+    text-transform: uppercase; margin: 0 0 6px 2px; font-weight: 600;
+  }
+  .section-title{
+    font-size: 22px; font-weight:700; margin: 0 0 14px 2px; color: var(--indigo-deep);
+    display:flex; align-items:baseline; gap:10px;
+  }
+  .section-title .sub{ font-size:14px; color: var(--ink-soft); font-family:"Zen Kaku Gothic New",sans-serif; font-weight:400; letter-spacing:0.05em;}
+
+  /* ---------- COUNTDOWN ---------- */
+  .countdown{
+    background: var(--indigo);
+    color: #ece3cf;
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 22px;
+    display:flex; align-items:center; justify-content:space-between;
+    position: relative; overflow:hidden;
+  }
+  .countdown::after{
+    content:"";
+    position:absolute; right:-18px; top:-18px; width:90px; height:90px;
+    border-radius:50%; border:1px solid rgba(236,227,207,0.18);
+  }
+  .countdown .num{ font-family:"Shippori Mincho",serif; font-size:23px; font-weight:700; line-height:1.3; white-space: nowrap; }
+  .countdown .num span{ font-size:15px; font-weight:400; margin-left:4px; color:#cdbfa0;}
+  .countdown .label{ font-size:13px; letter-spacing:0.14em; color:#cdbfa0; margin-top:4px;}
+  .countdown .right{ text-align:right; font-size:14px; color:#cdbfa0; line-height:1.7; }
+  .countdown .right b{ color:#ece3cf; font-weight:600; display:block; font-size:15px;}
+
+  /* ---------- TICKET CARDS (info) ---------- */
+  .ticket{
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 22px;
+    position: relative;
+    border: 1px solid var(--line);
+    overflow:hidden;
+  }
+  .ticket-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 14px 16px 12px;
+    border-bottom: 1px dashed var(--line-strong);
+    position:relative;
+  }
+  .ticket-head::before, .ticket-head::after{
+    content:""; position:absolute; bottom:-8px; width:16px; height:16px;
+    background: var(--bg); border-radius:50%;
+  }
+  .ticket-head::before{ left:-8px; }
+  .ticket-head::after{ right:-8px; }
+  .ticket-head h3{
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    font-size:17px; margin:0; color:var(--ink); font-weight:600;
+    display:flex; align-items:center; gap:8px;
+  }
+  .ticket-head .tag{
+    font-size: 12px; letter-spacing:0.08em; color: var(--gold);
+    border:1px solid var(--gold); padding: 2px 8px; border-radius: 20px;
+  }
+  .ticket-body{ padding: 14px 16px 16px; }
+
+  .flight-row{ display:flex; align-items:center; gap:10px; padding: 8px 0; }
+  .flight-row:not(:last-child){ border-bottom: 1px solid var(--line); }
+  .flight-pt{ text-align:center; flex:none; width: 64px; }
+  .flight-pt .time{ font-family:"Shippori Mincho",serif; font-size:22px; font-weight:700; color:var(--indigo-deep);}
+  .flight-pt .code{ font-size:13px; color:var(--ink-soft); letter-spacing:0.06em; margin-top:2px;}
+  .flight-mid{ flex:1; text-align:center; position:relative; padding: 0 4px;}
+  .flight-mid .line{ height:1px; background: var(--line-strong); position:relative; margin: 8px 0 6px;}
+  .flight-mid .plane{ position:absolute; top:-8px; left:50%; transform:translateX(-50%); font-size:15px; color: var(--gold);}
+  .flight-mid .flt{ font-size:13px; color: var(--ink-soft); letter-spacing:0.04em;}
+  .flight-date{ font-size:13px; color:var(--red); letter-spacing:0.06em; margin-bottom:6px; font-weight:600;}
+
+  .kv{ display:flex; justify-content:space-between; gap: 12px; padding: 7px 0; font-size: 15.5px; }
+  .kv:not(:last-child){ border-bottom: 1px solid var(--line); }
+  .kv .k{ color: var(--ink-soft); flex:none; }
+  .kv .v{ color: var(--ink); text-align:right; font-weight:500; }
+  .kv .v.mono{ font-family: "Zen Kaku Gothic New", monospace; letter-spacing: 0.02em;}
+
+  .price{
+    display:inline-block; margin-top:2px; font-family:"Shippori Mincho",serif;
+    font-size: 17px; color: var(--red); font-weight:700;
+  }
+
+  /* ---------- DAY HEADER ---------- */
+  .day-header{
+    display:flex; align-items:center; gap: 14px; margin-bottom: 22px;
+  }
+  .day-stamp{
+    width: 58px; height:58px; border-radius:50%; flex:none;
+    border: 2px solid var(--red); color: var(--red);
+    display:flex; align-items:center; justify-content:center;
+    font-family:"Shippori Mincho",serif; font-size:28px; font-weight:700;
+    transform: rotate(-6deg);
+    position:relative;
+  }
+  .day-stamp::after{
+    content:""; position:absolute; inset:-5px; border:1px solid var(--red);
+    border-radius:50%; opacity:0.35;
+  }
+  .day-header .txt h2{ margin:0; font-size:22px; color:var(--indigo-deep); font-weight:700;}
+  .day-header .txt p{ margin:3px 0 0; font-size:14px; color:var(--ink-soft); letter-spacing:0.05em;}
+
+  .leg{
+    position: relative;
+    margin: -12px 0 18px 0;
+    padding-left: 2px;
+    display:flex; align-items:center; gap:6px;
+    font-size: 12.5px; color: var(--ink-faint); letter-spacing:0.02em;
+  }
+  .leg .leg-icon{
+    position:absolute; left:-25px; top:50%; transform:translateY(-50%);
+    width:13px; height:13px; flex:none; color: var(--gold);
+  }
+  .leg .leg-icon svg{
+    width:100%; height:100%; fill:none; stroke:currentColor;
+    stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round;
+  }
+  .leg b{ color: var(--ink-soft); font-weight:600; }
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{ position: relative; padding-left: 26px; }
+  .timeline::before{
+    content:""; position:absolute; left:6px; top:6px; bottom:6px; width:1px;
+    background: repeating-linear-gradient(to bottom, var(--line-strong) 0, var(--line-strong) 4px, transparent 4px, transparent 9px);
+  }
+  .stop{ position:relative; padding-bottom: 22px; }
+  .stop:last-child{ padding-bottom:0; }
+  .stop::before{
+    content:""; position:absolute; left:-25px; top:5px; width:9px; height:9px;
+    border-radius:50%; background: var(--indigo); border: 2px solid var(--bg);
+    box-shadow: 0 0 0 1px var(--indigo);
+  }
+  .stop.tentative::before{ background: var(--bg); box-shadow: 0 0 0 1px var(--ink-faint); }
+
+  .stop-card{
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    box-shadow: var(--shadow);
+  }
+  .stop.tentative .stop-card{ border-style: dashed; box-shadow:none; background: transparent; }
+
+  .stop-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
+  .stop-time{
+    font-family:"Shippori Mincho",serif; font-size:15px; color: var(--red);
+    font-weight:700; letter-spacing:0.03em; white-space:nowrap; padding-top:1px;
+  }
+  .stop-name{ font-size: 17px; font-weight:600; color: var(--ink); line-height:1.45; flex:1;}
+  .stop-name .en{ display:block; font-size:13px; font-weight:400; color:var(--ink-faint); margin-top:1px; letter-spacing:0.03em;}
+  .stop-note{ font-size: 14.5px; color: var(--ink-soft); margin-top: 6px; line-height:1.6; }
+  .stop-alt{ font-size:14.5px; color: var(--ink-soft); margin-top:4px; padding-top:6px; border-top:1px dashed var(--line); }
+
+  .badge{
+    display:inline-flex; align-items:center; gap:4px; font-size:12.5px;
+    letter-spacing:0.05em; padding: 2px 8px 3px; border-radius: 20px; margin-top:8px;
+    font-weight:600;
+  }
+  .badge.confirmed{ background: rgba(163,56,47,0.09); color: var(--red); border:1px solid rgba(163,56,47,0.4);}
+  .badge.pending{ background: transparent; color: var(--indigo-soft); border:1px dashed var(--indigo-soft);}
+
+  .stop-desc{ font-size: 14.5px; color: var(--ink); line-height:1.75; margin-top: 8px; }
+  .feat-label{
+    font-size: 12.5px; letter-spacing:0.1em; color: var(--gold); font-weight:700;
+    margin: 10px 0 5px; text-transform: uppercase;
+  }
+  .stop-features{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:5px; }
+  .stop-features li{
+    font-size: 14px; color: var(--ink-soft); line-height:1.6; padding-left: 15px; position:relative;
+  }
+  .stop-features li::before{
+    content:""; position:absolute; left:1px; top:6px; width:5px; height:5px;
+    background: var(--gold); transform: rotate(45deg);
+  }
+  .stop.tentative .stop-features li::before{ background: var(--ink-faint); }
+  .stop-features li b{ color: var(--ink); font-weight:600; }
+
+  .nav-row{ margin-top: 10px; display:flex; flex-wrap:wrap; gap: 8px; }
+  .ticket-body .nav-row{ margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--line-strong); }
+
+  .map-link{
+    display:inline-flex; align-items:center; gap:5px;
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    font-size: 13px; font-weight:600; letter-spacing:0.03em;
+    color: var(--indigo);
+    text-decoration:none;
+    background: rgba(28,48,68,0.06);
+    border: 1px solid rgba(28,48,68,0.28);
+    border-radius: 20px;
+    padding: 5px 11px 5px 8px;
+    line-height:1;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .map-link:hover{ background: rgba(28,48,68,0.13); border-color: var(--indigo); }
+  .map-link svg{ width:11px; height:11px; flex:none; stroke-width:2.1; }
+  .map-link.alt{
+    color: var(--red);
+    background: rgba(163,56,47,0.07);
+    border-color: rgba(163,56,47,0.35);
+  }
+  .map-link.alt:hover{ background: rgba(163,56,47,0.14); border-color: var(--red); }
+
+  .day-note{
+    margin-top: 22px; padding: 12px 14px; border-left: 3px solid var(--gold);
+    background: rgba(169,130,73,0.08); font-size:14.5px; color: var(--ink-soft); line-height:1.7;
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  /* ---------- TAB BAR ---------- */
+  .tabbar{
+    position: fixed; bottom:0; left:50%; transform: translateX(-50%);
+    width:100%; max-width:480px; height: var(--tabbar-h);
+    background: var(--indigo-deep);
+    display:flex; z-index: 50;
+    padding-bottom: env(safe-area-inset-bottom, 0);
+    box-shadow: 0 -6px 20px rgba(16,29,43,0.35);
+  }
+  .tabbtn{
+    flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    background:none; border:none; color: #8b9bab; cursor:pointer; gap:5px;
+    font-family: inherit; padding: 8px 2px 10px;
+  }
+  .tabbtn .ring{
+    width: 30px; height:30px; border-radius:50%; border: 1.4px solid #4a5c6d;
+    display:flex; align-items:center; justify-content:center;
+    font-family:"Shippori Mincho",serif; font-size:15px; color:#8b9bab;
+    transition: all 0.2s ease;
+  }
+  .tabbtn span.label{ font-size: 12px; letter-spacing:0.04em; color:#8b9bab; transition: color 0.2s ease;}
+  .tabbtn.active .ring{ background: var(--red); border-color: var(--red); color:#ece3cf; }
+  .tabbtn.active span.label{ color:#ece3cf; }
+  .tabbtn:focus-visible{ outline: 2px solid var(--gold); outline-offset:2px; }
+
+  [hidden]{ display:none !important; }
+
+  a{ color: inherit; }
+
+  .footer-mark{
+    text-align:center; margin-top: 30px; font-size:12.5px; letter-spacing:0.14em;
+    color: var(--ink-faint);
+  }
+
+  /* ---------- SPOT GUIDE ---------- */
+  .spot-card{
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .spot-head{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding: 14px 16px 12px;
+    border-bottom: 1px dashed var(--line-strong);
+  }
+  .spot-head h3{
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    font-size:17px; margin:0; color:var(--ink); font-weight:600;
+  }
+  .spot-day-tag{
+    flex:none; font-size: 12px; letter-spacing:0.06em; color: var(--gold);
+    border:1px solid var(--gold); padding: 2px 8px; border-radius: 20px;
+  }
+  .spot-body{ padding: 13px 16px 15px; }
+  .spot-note{ font-size: 13.5px; color: var(--ink-soft); margin: 0 0 9px; line-height:1.6; }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <header class="appbar">
+    <svg class="torii" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 14 L42 14" stroke="#c1584d" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M9 9 L39 9" stroke="#c1584d" stroke-width="2" stroke-linecap="round"/>
+      <path d="M13 9 L11 40" stroke="#ece3cf" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M35 9 L37 40" stroke="#ece3cf" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M20 20 L28 20" stroke="#ece3cf" stroke-width="1.6" stroke-linecap="round"/>
+    </svg>
+    <div class="titles">
+      <h1>羅家沖繩員工旅遊</h1>
+      <p>2026.09.23 WED — 09.26 SAT・沖繩本島</p>
+    </div>
+    <div class="stamp-mini">沖縄<br>行</div>
+  </header>
+
+  <main class="content">
+
+    <!-- ===================== INFO PANEL ===================== -->
+    <section class="panel" id="panel-info" data-panel>
+
+      <div class="countdown" id="countdown-box">
+        <div>
+          <div class="num" id="countdown-num">—<span>天</span></div>
+          <div class="label">距離出發 DEPARTURE</div>
+        </div>
+        <div class="right">
+          <b>09/23（三）13:10</b>
+          台中 RMQ 起飛
+        </div>
+      </div>
+
+      <p class="eyebrow">旅程資訊</p>
+      <h2 class="section-title">行前準備 <span class="sub">Flight / Car / Stay</span></h2>
+
+      <!-- FLIGHT -->
+      <div class="ticket">
+        <div class="ticket-head">
+          <h3>✈ 星宇航空</h3>
+          <span class="tag">FLIGHT</span>
+        </div>
+        <div class="ticket-body">
+          <div class="flight-date">2026 / 09 / 23（三）去程</div>
+          <div class="flight-row">
+            <div class="flight-pt"><div class="time">13:10</div><div class="code">RMQ 台中</div></div>
+            <div class="flight-mid"><div class="line"><span class="plane">✈</span></div><div class="flt">JX302</div></div>
+            <div class="flight-pt"><div class="time">15:45</div><div class="code">OKA 沖繩</div></div>
+          </div>
+          <div class="flight-date" style="margin-top:14px;">2026 / 09 / 26（六）回程</div>
+          <div class="flight-row">
+            <div class="flight-pt"><div class="time">20:10</div><div class="code">OKA 沖繩</div></div>
+            <div class="flight-mid"><div class="line"><span class="plane">✈</span></div><div class="flt">JX313</div></div>
+            <div class="flight-pt"><div class="time">20:50</div><div class="code">RMQ 台中</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CAR -->
+      <div class="ticket">
+        <div class="ticket-head">
+          <h3>🚗 OTS 租車</h3>
+          <span class="tag">CAR</span>
+        </div>
+        <div class="ticket-body">
+          <div class="kv"><span class="k">費用</span><span class="v price">JPY 65,780</span></div>
+          <div class="kv"><span class="k">付款方式</span><span class="v">當場付款</span></div>
+          <div class="kv"><span class="k">取車</span><span class="v">09/23（三）16:30</span></div>
+          <div class="kv"><span class="k">還車</span><span class="v">09/26（六）19:00</span></div>
+          <div class="kv"><span class="k">租車編號</span><span class="v mono">OTS1431538</span></div>
+          <div class="kv"><span class="k">店舖</span><span class="v">臨空豐崎營業所</span></div>
+          <div class="kv"><span class="k">Email</span><span class="v mono" style="font-size:14px;">apudding1027@gmail.com</span></div>
+          <div class="nav-row" data-nav="OTS レンタカー 臨空豊崎営業所"></div>
+        </div>
+      </div>
+
+      <!-- HOTEL -->
+      <div class="ticket">
+        <div class="ticket-head">
+          <h3>🏨 東急 Stay 那霸</h3>
+          <span class="tag">STAY</span>
+        </div>
+        <div class="ticket-body">
+          <div class="kv"><span class="k">雙人房</span><span class="v">伸、昕</span></div>
+          <div class="kv"><span class="k">家庭房</span><span class="v">妤、雄、瑄</span></div>
+          <p class="feat-label">房內設施</p>
+          <ul class="stop-features">
+            <li>房內配有洗衣機／烘衣機，可自行清洗衣物</li>
+            <li>簡易廚房設備（IH爐、微波爐、小冰箱）</li>
+            <li>電熱水壺與基本餐具、杯具</li>
+          </ul>
+          <p class="feat-label">注意事項</p>
+          <ul class="stop-features">
+            <li>環保政策不主動提供牙刷、牙膏等一次性盥洗用品，建議自備</li>
+            <li>拖鞋、刮鬍刀等消耗品同樣建議自行攜帶或於便利商店購買</li>
+            <li>使用洗衣機需自備洗衣精或於館內販賣機購買</li>
+          </ul>
+          <div class="nav-row" data-nav="東急ステイ那覇"></div>
+        </div>
+      </div>
+
+      <p class="footer-mark">〆 羅家・員工旅遊 〆</p>
+    </section>
+
+    <!-- ===================== DAY 1 ===================== -->
+    <section class="panel" id="panel-day1" data-panel hidden>
+      <div class="day-header">
+        <div class="day-stamp">一</div>
+        <div class="txt"><h2>Day 1・那霸市區</h2><p>2026.09.23（三）</p></div>
+      </div>
+      
+      <div class="timeline">
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">OTS 租車：臨空豐崎營業所：取車</div></div>
+          <div class="stop-desc">抵達沖繩後的第一站，先到臨空豐崎營業所辦理取車手續，正式展開四天三夜的自駕環島行程。</div><p class="feat-label">小提醒</p><ul class="stop-features"><li>記得攜帶護照與國際駕照正本</li><li>現場確認車況與油量，拍照存證</li><li>取車後可先設定好衛星導航目的地</li></ul><div class="nav-row" data-nav="OTS レンタカー 臨空豊崎営業所"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>20min / 13km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">壺屋通<span class="en">Tsuboya Pottery Street</span></div></div>
+          <div class="stop-note">陶器老街散步，感受琉球燒陶氛圍。</div>
+          <div class="stop-desc">陶器職人聚集的老街，紅瓦老屋與登窯遺跡沿路可見，石板路兩旁滿是琉球燒賣店，很適合抵達當天散步收心，感受那霸最有生活感的一角。</div><p class="feat-label">特色亮點</p><ul class="stop-features"><li>南窯（ふーぐゎー）登窯遺跡，見證百年製陶歷史</li><li>沿街數十間工房與選物店，可挑選手拉坯茶碗、酒器</li><li>街角有琉球風獅爺（シーサー）專賣店</li><li>部分工房提供手作陶器體驗課程</li></ul><div class="nav-row" data-nav="壺屋やちむん通り"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>8min / 2.0km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-time">18:30</div><div class="stop-name">燒肉 Buchi</div></div>
+          <span class="badge pending">待訂位</span>
+          <div class="stop-desc">在地人氣燒肉店，主打沖繩縣產和牛與炭火現烤的香氣，環境輕鬆、翻桌快，很適合旅行第一晚放鬆吃頓好料。</div><p class="feat-label">人氣品項</p><ul class="stop-features"><li><b>特選和牛五花</b>，油脂分布均勻、炭烤香氣足</li><li><b>上鹽舌</b>，薄切牛舌沾鹽現烤</li><li><b>和牛橫膈膜（ハラミ）</b>，軟嫩多汁</li><li><b>燒肉沾醬拌飯</b>，收尾必點</li></ul><div class="nav-row" data-nav="焼肉ブチ 那覇"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>5min / 1.3km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">國際通逛街<span class="en">Kokusai Street</span></div></div>
+          <div class="stop-desc">長約1.6公里的那霸主要商店街，土產店、藥妝店與街頭小吃一路排開，晚上還有不少居酒屋亮燈，很適合飯後散步採買伴手禮。</div><p class="feat-label">特色亮點</p><ul class="stop-features"><li>沖繩土產、紅型工藝品、琉球玻璃專賣店林立</li><li>週日固定時段實施「步行者天國」封街</li><li>牧志公設市場周邊巷弄藏著在地食堂</li><li>沿街可買到黑糖點心、雪鹽冰淇淋等街頭小吃</li></ul><div class="nav-row" data-nav="国際通り 那覇"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>6min / 1.5km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">東急 Stay 那霸</div></div>
+          <div class="stop-desc">結束第一天行程回飯店休息，養精蓄銳準備明天一早出發北部的長天行程。</div><p class="feat-label">小提醒</p><ul class="stop-features"><li>先確認明日早餐店與集合時間，早點就寢</li><li>飯店周邊有超商可補給消夜與隔天路上零食</li><li>行李先簡單整理，方便隔天早出發</li></ul><div class="nav-row" data-nav="東急ステイ那覇"></div>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- ===================== DAY 2 ===================== -->
+    <section class="panel" id="panel-day2" data-panel hidden>
+      <div class="day-header">
+        <div class="day-stamp">二</div>
+        <div class="txt"><h2>Day 2・北部海岸</h2><p>2026.09.24（四）</p></div>
+      </div>
+      
+      <div class="timeline">
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">東急 Stay 那霸</div></div>
+          <div class="stop-desc">早晨從飯店出發，展開行程最長的一天——一路向北衝到美麗海水族館與古宇利島，記得先吃飽再上路。</div><p class="feat-label">小提醒</p><ul class="stop-features"><li>北部路途較遠，建議提早出發</li><li>車上備好水與零食</li><li>出發前確認油量是否充足</li></ul><div class="nav-row" data-nav="東急ステイ那覇"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>45min / 30km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">早餐：87 Drive-In<span class="en">Okinawa Street Food &amp; Drink</span></div></div>
+          <div class="stop-desc">沖繩風美式Drive-In風格的早餐店，主打漢堡與塔可飯等份量十足的美式沖繩混血料理，開車環島前先在此吃飽上路。</div><p class="feat-label">人氣品項</p><ul class="stop-features"><li><b>塔可飯（Taco Rice）</b>，沖繩代表性混血美食</li><li><b>手作漢堡排</b>，搭配招牌醬汁</li><li><b>薯餅與炒蛋套餐</b>，經典美式早餐組合</li><li><b>現打奶昔</b>，消暑解渴</li></ul><div class="nav-row" data-nav="87 Drive-In Okinawa"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>20min / 15km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">萬座毛<span class="en">Cape Manzamo</span></div></div>
+          <div class="stop-desc">隆起珊瑚礁形成的斷崖景點，因形似大象鼻子的岩石聞名，眼前是一整片湛藍東海，是沖繩最具代表性的海岸風景之一。</div><p class="feat-label">特色亮點</p><ul class="stop-features"><li>象鼻造型的珊瑚礁奇岩，為萬座毛地標</li><li>斷崖步道可俯瞰整片翡翠色海灣</li><li>天氣晴朗時能見度極佳，是熱門拍照景點</li><li>鄰近有土產店與觀景咖啡廳</li></ul><div class="nav-row" data-nav="万座毛"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>45min / 32km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">古宇利島<span class="en">Kouri Island</span></div></div>
+          <div class="stop-desc">透過古宇利大橋與本島相連的離島，四周被清澈海水環繞，兼具海灘、絕景兜風公路與傳說中的愛心岩，是北部兜風必經景點。</div><p class="feat-label">特色亮點</p><ul class="stop-features"><li>古宇利大橋，全長約2公里的跨海絕景公路</li><li>ハートロック（愛心岩），退潮時可走近拍照</li><li>島上多處白沙灘與透明海水</li><li>沿海岸線設有多個觀景停車區</li></ul><div class="nav-row" data-nav="古宇利島"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>3min / 1km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">午餐：古宇利蝦蝦飯</div></div>
+          <div class="stop-note">用 App 提前外帶點餐。</div>
+          <div class="stop-desc">古宇利島上的夏威夷風蒜味蝦餐車／小店，濃郁奶油蒜香蝦搭配白飯，是海島兜風途中很受歡迎的外帶午餐選擇。</div><p class="feat-label">人氣品項</p><ul class="stop-features"><li><b>蒜味奶油蝦飯</b>，招牌基本款</li><li><b>辣味蝦飯</b>，喜歡重口味可選擇</li><li><b>檸檬奶油蝦飯</b>，清爽版本</li><li>用 App 預先點餐可省去現場排隊</li></ul><div class="nav-row" data-nav="古宇利島 えびえび"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>25min / 16km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">美麗海水族館<span class="en">Churaumi Aquarium</span></div></div>
+          <div class="stop-desc">世界級規模的水族館，最大亮點是可近距離仰望鯨鯊與鬼蝠魟悠游的「黑潮之海」大水槽，親子與情侶旅客都很推薦安排半天時間。</div><p class="feat-label">特色亮點</p><ul class="stop-features"><li>「黑潮之海」大水槽，飼養鯨鯊與鬼蝠魟同游</li><li>珊瑚礁展示區，重現沖繩周邊海底生態</li><li>海豚劇場與海牛（儒艮）生態展示</li><li>戶外設有免費開放的海豚礁與海龜館</li></ul><div class="nav-row" data-nav="沖縄美ら海水族館"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>10min / 6km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">下午茶：蘋果咖啡</div></div>
+          <div class="stop-desc">以「蘋果」為主題的可愛咖啡廳，被綠意環繞的庭院座位很受歡迎，適合兜風途中稍作休息，享用手作甜點與飲品。</div><p class="feat-label">人氣品項</p><ul class="stop-features"><li><b>蘋果塔／蘋果派</b>，店名同款招牌甜點</li><li><b>鬆餅套餐</b>，可另加時令水果</li><li><b>自家焙煎咖啡</b>，適合搭配甜點</li><li>庭院露天座位，適合悠閒拍照小憩</li></ul><div class="nav-row" data-nav="りんごカフェ 今帰仁"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>15min / 8km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-time">16:30</div><div class="stop-name">瀨底島透明獨木舟體驗</div></div>
+          <div class="stop-note">集合地點請提前 20 分鐘抵達。</div>
+          <div class="stop-desc">在瀨底島清澈見底的海域划透明獨木舟，能直接看見船底下的珊瑚礁與魚群，是全程互動感最強的水上活動。</div><p class="feat-label">特色亮點</p><ul class="stop-features"><li>透明船底設計，划行時可直視海底珊瑚與熱帶魚</li><li>瀨底海域水質清澈，能見度高</li><li>活動含教練簡易教學，新手也能安心體驗</li><li>建議攜帶防水袋，可拍下水下照片</li></ul>          <div class="nav-row"><a class="map-link" href="https://maps.app.goo.gl/4pqyf8RfXeuRDybh8" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+            導航至集合地點
+          </a></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>20min / 12km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-time">20:00</div><div class="stop-name">Yamashiro Pork Cutlet Restaurant</div></div>
+          <span class="badge confirmed">已訂位</span>
+          <div class="stop-desc">主打沖繩豬肉炸豬排的專門店，選用優質豬肉現炸現切，酥脆外皮鎖住肉汁，是划完獨木舟後補充體力的實在晚餐選擇。</div><p class="feat-label">人氣品項</p><ul class="stop-features"><li><b>里肌豬排定食</b>，招牌基本款</li><li><b>菲力豬排定食</b>，肉質更軟嫩</li><li><b>沖繩阿古豬（あぐー豚）豬排</b>，如有供應建議必點</li><li>套餐附白飯、味噌湯與高麗菜絲吃到飽</li></ul><div class="nav-row" data-nav="Yamashiro Pork Cutlet Restaurant Okinawa"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>1hr 20min / 85km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">東急 Stay 那霸</div></div>
+          <div class="stop-desc">結束北部長征，開車返回那霸飯店，好好休息迎接明天的中部行程。</div><p class="feat-label">小提醒</p><ul class="stop-features"><li>北部返程車程較長，注意夜間行車安全</li><li>確認明日早餐與集合時間</li><li>抵達後可到附近超商補給</li></ul><div class="nav-row" data-nav="東急ステイ那覇"></div>
+        </div></div>
+        </div>
+    </section>
+
+    <!-- ===================== DAY 3 ===================== -->
+    <section class="panel" id="panel-day3" data-panel hidden>
+      <div class="day-header">
+        <div class="day-stamp">三</div>
+        <div class="txt"><h2>Day 3・中部生活圈</h2><p>2026.09.25（五）</p></div>
+      </div>
+      
+      <div class="timeline">
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">東急 Stay 那霸</div></div>
+          <div class="stop-desc">第三天從飯店出發，路線橫跨市區與中部，記得先吃份道地飯糰再上路。</div><p class="feat-label">小提醒</p><ul class="stop-features"><li>先確認今日早餐店營業時間</li><li>中部路段車程較長，注意行車時間</li><li>出發前可先規劃停車地點</li></ul><div class="nav-row" data-nav="東急ステイ那覇"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>10min / 3km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-time">8:30</div><div class="stop-name">早餐：おにぎりや 縁むすび</div></div>
+          <span class="badge pending">待訂位</span>
+          <div class="stop-desc">職人手握飯糰專賣店，選用富山越光米、內餡超過30種，從朝食到宵夜時段都營業，是體會日式家常美味的早餐好選擇。</div><p class="feat-label">人氣品項</p><ul class="stop-features"><li><b>堪能套餐</b>，飯糰2顆＋六款手作小菜＋今日湯品＋甜點</li><li><b>蔥味噌飯糰</b>，自家熬煮蔥味噌內餡</li><li><b>水雲（もずく）佃煮飯糰</b>，沖繩海藻風味</li><li><b>飯糰2顆套餐</b>，附湯品與小菜的輕巧選擇</li></ul><div class="nav-row" data-nav="おにぎりや 縁むすび"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>30min / 24km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">SAN-A PARCO CITY</div></div>
+          <div class="stop-desc">沖繩規模數一數二的大型購物中心，百貨、超市、美食街與電影院一應俱全，下雨天或想集中採購時很方便。</div><p class="feat-label">特色亮點</p><ul class="stop-features"><li>沖繩最大級商場之一，品牌與美食選擇齊全</li><li>設有大型美食街，可一次解決多人不同口味</li><li>內含超市可採購伴手禮零食與泡麵</li><li>停車空間充足，開車前往相當方便</li></ul><div class="nav-row" data-nav="SAN-A PARCO CITY"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>30min / 25km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-time">12:30</div><div class="stop-name">午餐：敘敘苑 商業午餐</div></div>
+          <span class="badge confirmed">已訂位</span>
+          <div class="stop-desc">日本知名高級燒肉連鎖店，商業午餐以親民價格就能吃到招牌燒肉與冷麵，環境舒適適合正式聚餐，是員工旅遊犒賞自己的好選擇。</div><p class="feat-label">人氣品項</p><ul class="stop-features"><li><b>上蔥鹽牛舌</b>，招牌炙燒牛舌</li><li><b>簾肩里脊炙燒</b>，油花細緻的招牌肉品</li><li><b>壺漬牛小排</b>，秘傳醬汁醃漬入味</li><li><b>銀盤冷麵</b>，燒肉後解膩的經典收尾</li></ul><div class="nav-row" data-nav="叙々苑 沖縄"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>8min / 3km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">A&amp;W Burger</div></div>
+          <div class="stop-desc">沖縄在地暱稱「エンダー」的美式速食連鎖店，招牌現煮麥根沙士與捲捲薯條是沖繩人從小吃到大的懷念滋味。</div><p class="feat-label">人氣品項</p><ul class="stop-features"><li><b>Root Beer 麥根沙士</b>，可無限續杯的招牌飲品</li><li><b>Curly Fries 捲捲薯條</b>，招牌配菜</li><li><b>Mozza Burger 莫札瑞拉起司漢堡</b>，人氣主餐</li><li><b>Onion Rings 洋蔥圈</b>，酥脆下酒零食</li></ul><div class="nav-row" data-nav="A&amp;W 沖縄"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>8min / 2.5km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">hoppepan 麵包</div></div>
+          <div class="stop-desc">總是大排長龍的人氣麵包店，內用外帶皆可、鹹甜口味齊全，招牌商品常常一出爐就被搶購一空。</div><p class="feat-label">人氣品項</p><ul class="stop-features"><li><b>栗子鹽奶油法棍三明治</b>，店內人氣No.1商品</li><li><b>古巴三明治</b>，烤豬肉、切達起司與果醬夾入可頌麵包</li><li><b>惣菜麵包系列</b>，鹹食口味選擇多</li><li>結帳時可請店員加熱，現吃更美味</li></ul><div class="nav-row" data-nav="ホッペパン 沖縄"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>12min / 5km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">港川外人住宅<span class="en">Minatogawa Foreigner's House</span></div></div>
+          <div class="stop-desc">二戰後美軍眷屬住宅區改建而成的文青聚落，白牆平房內藏著雜貨店、咖啡廳與選品店，散發悠閒的異國氛圍。</div><p class="feat-label">特色亮點</p><ul class="stop-features"><li>戰後美式平房建築群，保留獨特異國街景</li><li>聚落內進駐多間選物店、烘焙坊與咖啡廳</li><li>巷弄安靜好拍照，適合慢慢閒晃</li><li>部分店家為住宅改建，需留意營業時間</li></ul><div class="nav-row" data-nav="港川外国人住宅"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>15min / 6km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-time">20:00</div><div class="stop-name">Oniku no Isshin 壽喜燒</div></div>
+          <span class="badge pending">待訂位</span>
+          <div class="stop-desc">道地日式壽喜燒專門店，鍋物以醬油甜辣調味的割り下慢煮和牛與時蔬，沾上生蛋黃享用，是為員工旅遊畫下溫暖句點的晚餐。</div><p class="feat-label">人氣品項</p><ul class="stop-features"><li><b>和牛壽喜燒套餐</b>，招牌鍋物主餐</li><li><b>生蛋黃沾醬</b>，壽喜燒經典吃法</li><li><b>季節野菜與豆腐拼盤</b>，鍋物配料</li><li><b>白飯／烏龍麵</b>，可加點作為收尾主食</li></ul><div class="nav-row" data-nav="お肉のいっしん 沖縄"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>12min / 5km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">東急 Stay 那霸</div></div>
+          <div class="stop-desc">結束今天的市區與中部行程，回飯店休息，準備明天最後一天的南部行程。</div><p class="feat-label">小提醒</p><ul class="stop-features"><li>確認明日早餐與還車時間</li><li>行李可先簡單收拾</li><li>早點休息迎接最後一天</li></ul><div class="nav-row" data-nav="東急ステイ那覇"></div>
+        </div></div>
+        </div>
+    </section>
+
+    <!-- ===================== DAY 4 ===================== -->
+    <section class="panel" id="panel-day4" data-panel hidden>
+      <div class="day-header">
+        <div class="day-stamp">四</div>
+        <div class="txt"><h2>Day 4・那霸南部・機場</h2><p>2026.09.26（六）</p></div>
+      </div>
+      
+      <div class="timeline">
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">東急 Stay 那霸</div></div>
+          <div class="stop-desc">最後一天從飯店出發，上午先在市區走跳，下午再往南邊機場方向移動，準備完成這趟沖繩之旅。</div><p class="feat-label">小提醒</p><ul class="stop-features"><li>行李可先整理打包放車上</li><li>確認今日還車與登機時間</li><li>把握最後機會補買伴手禮</li></ul><div class="nav-row" data-nav="東急ステイ那覇"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>8min / 3km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">早餐：JEF Burger</div></div>
+          <div class="stop-note">9:00 開門。</div>
+          <div class="stop-desc">沖繩土生土長的漢堡連鎖店，用沖繩苦瓜、午餐肉等在地食材做成獨創漢堡，是只有在沖繩才吃得到的鄉土速食滋味。</div><p class="feat-label">人氣品項</p><ul class="stop-features"><li><b>苦瓜漢堡（ゴーヤーバーガー）</b>，招牌鄉土漢堡</li><li><b>ぬーやるバーガー</b>，另一款人氣招牌漢堡</li><li><b>現炸沖繩若雞炸雞</b>，店家自製調味</li><li><b>餅乾造型薯條</b>，特色配餐點心</li></ul><div class="nav-row" data-nav="JEFバーガー 沖縄"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>8min / 2km</b></span></div>
+        <div class="stop tentative"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">第一牧志公設市場</div></div>
+          <div class="stop-note">行程未定，視時間彈性安排。</div>
+          <div class="stop-desc">那霸最具代表性的傳統市場，一樓滿是新鮮海產、豬肉與熱帶水果攤位，二樓餐廳可代客料理，體驗「自己選、樓上吃」的在地吃法。</div><p class="feat-label">特色亮點</p><ul class="stop-features"><li>一樓鮮魚、豬肉、南國水果攤位齊聚</li><li>可購買生鮮後委託二樓食堂代客料理（持ち上げ制度）</li><li>沖繩傳統食材如豬耳朵、島豆腐等應有盡有</li><li>週邊巷弄「市場本通」商店街適合順遊</li></ul><div class="nav-row" data-nav="第一牧志公設市場"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>10min / 3km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">沖宮<span class="en">Okinogu Shrine</span></div></div>
+          <div class="stop-desc">隱身樹林間的神社，據傳供奉開運招福之神，氣氛靜謐清幽，很適合作為旅程中段沉澱心情、祈求好運的小停留。</div><p class="feat-label">特色亮點</p><ul class="stop-features"><li>傳說中的開運、締結良緣能量景點</li><li>參道被茂密林木環繞，氣氛清幽</li><li>可求御守與繪馬，適合祈願旅途平安</li><li>鄰近奧武山公園，散步範圍寬廣</li></ul><div class="nav-row" data-nav="沖宮"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>8min / 2.5km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">波上宮<span class="en">Naminoue Shrine</span></div></div>
+          <div class="stop-desc">建於斷崖之上、俯瞰那霸海濱的神社，被列為琉球八社之首，鳥居與大海同框的畫面是沖繩經典景色之一。</div><p class="feat-label">特色亮點</p><ul class="stop-features"><li>琉球八社中地位最高的神社</li><li>神社建於臨海斷崖，鳥居與海景相映成畫</li><li>緊鄰波之上海灘，可順道散步賞海</li><li>境內設有波上宮兒童遊樂設施</li></ul><div class="nav-row" data-nav="波上宮"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>10min / 3km</b></span></div>
+        <div class="stop tentative"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">午餐</div></div>
+          <div class="stop-alt">泊港魚市場 ／ 系滿魚食堂（二選一，尚未決定）</div>
+          <div class="stop-desc">南部漁港型食堂，主打產地直送的當日鮮魚料理，兩間都以平價新鮮的定食聞名，可視當天路線與排隊人潮二選一。</div><p class="feat-label">人氣品項（依店家）</p><ul class="stop-features"><li>泊いゆまち：<b>綜合生魚片定食</b>，多種鮮魚一次吃到</li><li>泊いゆまち：<b>海鮮丼</b>，滿滿現流海鮮蓋飯</li><li>系滿漁協食堂：<b>鮪魚定食</b>，產地直送鮪魚料理</li><li>系滿漁協食堂：<b>沖繩鮮魚炸物套餐</b>，酥炸新鮮漁獲</li></ul><div class="nav-row" data-nav-multi='[{"label":"泊港魚市場","query":"泊いゆまち"},{"label":"系滿魚食堂","query":"糸満漁業協同組合 食堂"}]'></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>20min / 10km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">ASHIBINAA Outlet</div></div>
+          <div class="stop-desc">沖繩規模最大的Outlet商場，鄰近機場，國際精品與運動品牌齊全，適合安排在回程前做最後採購。</div><p class="feat-label">特色亮點</p><ul class="stop-features"><li>沖縄唯一大型Outlet商場，品牌選擇豐富</li><li>距那霸機場車程約15分鐘，適合安排在回程前</li><li>戶外開放式商場設計，逛街舒適</li><li>部分店鋪提供退稅服務</li></ul><div class="nav-row" data-nav="アシビナー アウトレットモール"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>8min / 3km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">瀨長島<span class="en">Umikaji Terrace</span></div></div>
+          <div class="stop-desc">仿地中海白色建築群沿著海崖而建，坐擁機場起降與夕陽海景，是沖繩南部人氣最高的拍照打卡與用餐景點。</div><p class="feat-label">特色亮點</p><ul class="stop-features"><li>純白希臘風建築群，沿海崖層層而建</li><li>絕佳夕陽觀賞位置，傍晚時分尤其熱門</li><li>可近距離眺望那霸機場飛機起降</li><li>進駐多間海景咖啡廳、雜貨與小吃店</li></ul><div class="nav-row" data-nav="瀬長島ウミカジテラス"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>8min / 3km</b></span></div>
+        <div class="stop tentative"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">晚餐</div></div>
+          <div class="stop-alt">Taco Rice Cafe Kijimuna ／ POSILLIPO cucina meridionale（二選一，尚未決定）</div>
+          <div class="stop-desc">兩間風格迥異的晚餐選擇：一間主打沖繩經典塔可飯，另一間是南義大利風味餐廳，可依當天心情與訂位狀況決定要吃哪一間。</div><p class="feat-label">人氣品項（依店家）</p><ul class="stop-features"><li>Taco Rice Cafe Kijimuna：<b>招牌塔可飯</b>，多種醬料口味可選</li><li>Taco Rice Cafe Kijimuna：<b>塔可飯冰淇淋</b>，話題甜鹹創意組合</li><li>POSILLIPO：<b>手工窯烤披薩</b>，南義風味</li><li>POSILLIPO：<b>海鮮義大利麵</b>，使用沖繩在地漁獲</li></ul><div class="nav-row" data-nav-multi='[{"label":"Taco Rice Cafe Kijimuna","query":"Taco Rice Cafe Kijimuna Okinawa"},{"label":"POSILLIPO","query":"POSILLIPO cucina meridionale Okinawa"}]'></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>10min / 4km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-time">18:00</div><div class="stop-name">OTS 租車：臨空豐崎營業所：還車</div></div>
+          <div class="stop-desc">旅程尾聲在此還車，結束四天的環島自駕行程。</div><p class="feat-label">小提醒</p><ul class="stop-features"><li>還車前記得加滿油，避免額外收費</li><li>清點隨身物品與行李，避免遺留車內</li><li>預留充裕時間辦理還車與前往機場報到</li></ul><div class="nav-row" data-nav="OTS レンタカー 臨空豊崎営業所"></div>
+        </div></div>
+        <div class="leg"><span class="leg-icon"><svg viewBox="0 0 24 24"><path d="M4 16 l1.5 -5.5 A2 2 0 0 1 7.4 9 h9.2 a2 2 0 0 1 1.9 1.5 L20 16"/><path d="M4 16 h16 v3 a1 1 0 0 1 -1 1 h-1 a1 1 0 0 1 -1 -1 v-1 H7 v1 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 z"/><circle cx="7.5" cy="16" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span><span>開車約 <b>8min / 3km</b></span></div>
+        <div class="stop"><div class="stop-card">
+          <div class="stop-top"><div class="stop-name">機場買飯糰</div></div>
+          <div class="stop-note">國際線 4 樓，營業時間 07:00–20:00。</div>
+          <div class="stop-desc">國際線航廈4樓聚集多間人氣飯糰、點心店，是登機前補給行李箱與肚子的最後機會。</div><p class="feat-label">人氣品項</p><ul class="stop-features"><li>沖繩限定口味飯糰，如紅豬肉、水雲海藻等</li><li>黑糖、雪鹽相關伴手禮零食</li><li>沖繩風味御飯糰組合，適合機上或路上享用</li><li>營業時間 07:00–20:00，記得預留採買時間</li></ul><div class="nav-row" data-nav="那覇空港 国際線"></div>
+        </div></div>
+      </div>
+      <div class="day-note">19:50 前抵達機場辦理登機・20:10 沖繩起飛，20:50 抵達台中，旅程結束。</div>
+    </section>
+
+    <!-- ===================== SPOT GUIDE ===================== -->
+    <section class="panel" id="panel-spots" data-panel hidden>
+      <p class="eyebrow">深度導覽</p>
+      <h2 class="section-title">景點資訊 <span class="sub">Spot Guide</span></h2>
+
+      <div class="spot-card">
+        <div class="spot-head"><h3>國際通</h3><span class="spot-day-tag">DAY 1</span></div>
+        <div class="spot-body">
+          <ul class="stop-features">
+            <li><b>Calbee+</b>：現炸薯條，沖繩限定紅芋口味</li>
+            <li><b>鹽屋</b>：雪鹽、雪鹽棉花餅、雪鹽冰淇淋</li>
+            <li><b>美麗海水族館直營店</b>：扭蛋、雪鹽汽水</li>
+            <li><b>Fukugiya</b>：年輪蛋糕</li>
+            <li><b>35 Coffee</b>：35咖啡、扶桑花茶包</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="spot-card">
+        <div class="spot-head"><h3>古宇利島</h3><span class="spot-day-tag">DAY 2</span></div>
+        <div class="spot-body">
+          <ul class="stop-features">
+            <li>古宇利大橋南詰展望所</li>
+            <li>古宇利海灘</li>
+            <li>古宇利海洋塔</li>
+            <li>心型岩</li>
+            <li>渡海海灘</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="spot-card">
+        <div class="spot-head"><h3>美麗海水族館</h3><span class="spot-day-tag">DAY 2</span></div>
+        <div class="spot-body">
+          <ul class="stop-features">
+            <li><b>鯨鯊餵食秀</b>：15:00、17:00</li>
+            <li><b>海豚秀</b>：10:30、11:30、13:00、15:00、17:00</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="spot-card">
+        <div class="spot-head"><h3>SAN-A PARCO CITY</h3><span class="spot-day-tag">DAY 3</span></div>
+        <div class="spot-body">
+          <p class="feat-label">美食</p>
+          <ul class="stop-features">
+            <li><b>A&amp;W Burger</b>：二樓 Green zone 美食廣場</li>
+            <li><b>Steak House 88Jr.</b>：二樓 Green zone 美食廣場</li>
+            <li><b>敘敘苑</b>（11:00–22:00，商業午餐）：三樓 Green zone</li>
+          </ul>
+          <p class="feat-label">購物</p>
+          <ul class="stop-features">
+            <li><b>SAN-A 食品館</b>：一樓，Orange zone</li>
+            <li><b>GU</b>：二樓，Green zone</li>
+            <li><b>Polo Ralph Lauren</b>：二樓，Blue zone</li>
+            <li><b>PORTER</b>：二樓，Blue zone</li>
+            <li><b>The North Face</b>：二樓，Blue zone</li>
+            <li><b>niko and...</b>：二樓，Green zone</li>
+            <li><b>SORA</b>（Patagonia、Barbour）：二樓，Green zone</li>
+            <li><b>Uniqlo</b>：三樓，Orange zone</li>
+            <li><b>Muji</b>：三樓，Orange zone</li>
+            <li><b>ABC Mart</b>：三樓，Blue zone</li>
+            <li><b>吉伊卡哇</b>：三樓，Green zone</li>
+            <li><b>任天堂</b>：三樓，Green zone</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="spot-card">
+        <div class="spot-head"><h3>港川外人住宅</h3><span class="spot-day-tag">DAY 3</span></div>
+        <div class="spot-body">
+          <ul class="stop-features">
+            <li><b>Cocoroar Coffee</b>：舒芙蕾、塔可飯</li>
+            <li><b>Houki Boshi</b>：可麗露</li>
+            <li><b>Ohacorte</b>：水果塔</li>
+            <li><b>Okinawa Cerrado Coffee</b>：咖啡豆</li>
+            <li><b>Ippe-coppe</b>：麵包</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="spot-card">
+        <div class="spot-head"><h3>第一牧志公設市場</h3><span class="spot-day-tag">DAY 4</span></div>
+        <div class="spot-body">
+          <p class="spot-note">一樓現買、二樓現煮。</p>
+          <ul class="stop-features">
+            <li><b>中真水產</b>：夜光貝、龍蝦、生蠔</li>
+            <li><b>丸昌MEAT</b>：阿古豬、石垣牛</li>
+            <li><b>步沙翁</b>：現炸甜甜圈，11點開賣，約半小時賣光</li>
+            <li><b>市場食堂 道頓崛</b>：代客料理</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="footer-mark">〆 深度景點導覽 〆</p>
+    </section>
+
+  </main>
+
+  <nav class="tabbar" id="tabbar">
+    <button class="tabbtn active" data-target="panel-info"><span class="ring">案</span><span class="label">資訊</span></button>
+    <button class="tabbtn" data-target="panel-day1"><span class="ring">一</span><span class="label">Day1</span></button>
+    <button class="tabbtn" data-target="panel-day2"><span class="ring">二</span><span class="label">Day2</span></button>
+    <button class="tabbtn" data-target="panel-day3"><span class="ring">三</span><span class="label">Day3</span></button>
+    <button class="tabbtn" data-target="panel-day4"><span class="ring">四</span><span class="label">Day4</span></button>
+    <button class="tabbtn" data-target="panel-spots"><span class="ring">景</span><span class="label">景點</span></button>
+  </nav>
+
+</div>
+
+<script>
+  // ---- Tab switching ----
+  var buttons = document.querySelectorAll('.tabbtn');
+  var panels = document.querySelectorAll('.panel');
+
+  buttons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var target = btn.getAttribute('data-target');
+
+      buttons.forEach(function(b){ b.classList.toggle('active', b === btn); });
+      panels.forEach(function(p){ p.hidden = (p.id !== target); });
+
+      var main = document.querySelector('.content');
+      main.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // ---- Build Google Maps navigation links ----
+  var PIN_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>';
+
+  function navUrl(query){
+    return 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(query) + '&travelmode=driving';
+  }
+
+  document.querySelectorAll('[data-nav]').forEach(function(row){
+    var q = row.getAttribute('data-nav');
+    var a = document.createElement('a');
+    a.className = 'map-link';
+    a.href = navUrl(q);
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.innerHTML = PIN_SVG + '導航';
+    row.appendChild(a);
+  });
+
+  document.querySelectorAll('[data-nav-multi]').forEach(function(row){
+    var items = JSON.parse(row.getAttribute('data-nav-multi'));
+    items.forEach(function(item){
+      var a = document.createElement('a');
+      a.className = 'map-link alt';
+      a.href = navUrl(item.query);
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.innerHTML = PIN_SVG + '導航：' + item.label;
+      row.appendChild(a);
+    });
+  });
+
+  // ---- Countdown to departure ----
+  // Re-reads the device's current date every time this page is opened,
+  // so the countdown always reflects "today" — no manual reset needed.
+  (function(){
+    function localMidnight(y, m, d){ return new Date(y, m - 1, d); }
+
+    var DEPARTURE = localMidnight(2026, 9, 23);
+    var MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+    var box = document.getElementById('countdown-num');
+    var label = document.querySelector('.countdown .label');
+
+    function render(){
+      var now = new Date();
+      var today = localMidnight(now.getFullYear(), now.getMonth() + 1, now.getDate());
+      var diffDays = Math.round((DEPARTURE - today) / MS_PER_DAY);
+
+      if (diffDays > 0){
+        box.innerHTML = diffDays + '<span>天</span>';
+        if (label) label.textContent = '距離出發 DEPARTURE';
+      } else if (diffDays === 0){
+        box.innerHTML = '出發日 Day 1';
+        if (label) label.textContent = 'DEPARTURE DAY';
+      } else if (diffDays === -1){
+        box.innerHTML = 'Day 2';
+        if (label) label.textContent = 'ENJOY OKINAWA';
+      } else if (diffDays === -2){
+        box.innerHTML = 'Day 3';
+        if (label) label.textContent = 'ENJOY OKINAWA';
+      } else if (diffDays === -3){
+        box.innerHTML = 'Day 4';
+        if (label) label.textContent = 'ENJOY OKINAWA';
+      } else if (diffDays === -4){
+        box.innerHTML = '準備回家嘍！Day 5';
+        if (label) label.textContent = 'FLYING HOME TODAY';
+      } else {
+        box.innerHTML = '已完成';
+        if (label) label.textContent = 'TRIP COMPLETE';
+      }
+    }
+
+    render();
+    // Catch the case where the tab is left open across midnight.
+    setInterval(render, 60 * 1000);
+    document.addEventListener('visibilitychange', function(){
+      if (!document.hidden) render();
+    });
+  })();
+</script>
+</body>
+</html>
